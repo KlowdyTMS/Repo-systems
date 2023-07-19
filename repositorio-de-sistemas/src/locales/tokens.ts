@@ -4,5 +4,9 @@ export const tokens = {
   },
   nav: {
     login: "nav.login",
+    copyLink: "nav.copyLink",
+    copiedLink: "nav.copiedLink",
+    accessProject: "nav.accessProject",
+    version: "nav.version",
   },
 };

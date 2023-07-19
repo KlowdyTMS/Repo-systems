@@ -1,14 +1,24 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import App from "../App";
+import Projects from "../pages/projects/Projects";
 
-const LazyNotFound = lazy(() => import("../pages/Errors/NotFound"));
+const LazyNotFound = lazy(() => import("../pages/errors/NotFound"));
 
 export const browserRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Outlet />,
-    children: [],
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Projects />,
+      },
+      {
+        path: ":secretary",
+        element: <Projects />,
+      },
+    ],
   },
   {
     path: "*",

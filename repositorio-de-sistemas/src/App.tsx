@@ -2,7 +2,7 @@ import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { ErrorBoundary } from "react-error-boundary";
 import theme from "./themes/config";
 import { Outlet } from "react-router-dom";
-import NotFound from "./pages/Errors/NotFound";
+import NotFound from "./pages/errors/NotFound";
 
 function App() {
   return (
