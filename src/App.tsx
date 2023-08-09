@@ -1,13 +1,14 @@
-import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
+import { ChakraProvider, createLocalStorageManager } from "@chakra-ui/react";
 import { ErrorBoundary } from "react-error-boundary";
-import theme from "./themes/config";
 import { Outlet } from "react-router-dom";
 import NotFound from "./pages/errors/NotFound";
+import theme from "./themes/config";
 
 function App() {
+  const colorModeManager = createLocalStorageManager("@color-mode");
+
   return (
-    <ChakraProvider theme={theme}>
-      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+    <ChakraProvider theme={theme} colorModeManager={colorModeManager}>
       <ErrorBoundary FallbackComponent={NotFound}>
         <Outlet />
       </ErrorBoundary>
