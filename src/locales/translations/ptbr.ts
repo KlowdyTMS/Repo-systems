@@ -6,4 +6,5 @@ export const ptbr = {
   [tokens.nav.copiedLink]: "Link copiado!",
   [tokens.nav.accessProject]: "Acessar projeto",
   [tokens.nav.version]: "Versão",
+  [tokens.nav.secretaries]: "Secretarias",
 };

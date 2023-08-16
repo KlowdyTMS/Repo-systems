@@ -6,4 +6,5 @@ export const en = {
   [tokens.nav.copiedLink]: "Link copied!",
   [tokens.nav.accessProject]: "Access project",
   [tokens.nav.version]: "Version",
+  [tokens.nav.secretaries]: "Secretaries",
 };

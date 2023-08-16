@@ -1,14 +1,12 @@
-import { SimpleGrid, useColorMode } from "@chakra-ui/react";
-import { CardProject } from "../../components/Card";
+import { SimpleGrid } from "@chakra-ui/react";
 import { configProjects } from ".";
+import { CardProject } from "../../components/Card";
 
 export default function Projects() {
-  const { colorMode, toggleColorMode } = useColorMode();
-
   return (
     <SimpleGrid
+      flexDirection={"row"}
       marginTop={"10px"}
-      marginLeft={"10px"}
       spacing={4}
       templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
     >
@@ -25,7 +23,6 @@ export default function Projects() {
           </CardProject.Container>
         );
       })}
-      <button onClick={toggleColorMode}>Trocar de cor {colorMode}</button>
     </SimpleGrid>
   );
 }

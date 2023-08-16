@@ -8,5 +8,6 @@ export const tokens = {
     copiedLink: "nav.copiedLink",
     accessProject: "nav.accessProject",
     version: "nav.version",
+    secretaries: "nav.secretaries",
   },
 };
