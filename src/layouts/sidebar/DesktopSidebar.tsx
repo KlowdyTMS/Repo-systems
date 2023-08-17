@@ -1,8 +1,15 @@
-import { Divider, Input, useDisclosure } from "@chakra-ui/react";
-import { LeftBar } from "../../components/LeftBar";
-import { DrawerSecretaries } from "../../components/DrawerSecretaries";
-import { useRef } from "react";
+import {
+  Divider,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { useRef, useState } from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 import { CardSecretary } from "../../components/CardSecretary/CardSecretary";
+import { DrawerSecretaries } from "../../components/DrawerSecretaries";
+import { LeftBar } from "../../components/LeftBar";
 import { configSidebar } from "./config";
 
 export function DesktopSidebar() {
@@ -11,6 +18,11 @@ export function DesktopSidebar() {
   };
   const { onClose, onOpen, isOpen } = useDisclosure();
   const ref = useRef(null);
+  const [searchText, setSearchText] = useState("");
+
+  const filteredConfig = configSidebar.filter((value) =>
+    value.name.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   return (
     <LeftBar.Container {...propsContainer}>
@@ -19,19 +31,31 @@ export function DesktopSidebar() {
         <Divider orientation="horizontal" />
         <LeftBar.Main searchRef={ref} onOpen={onOpen} />
         <DrawerSecretaries.Container
-          ref={ref}
+          containerRef={ref}
           onClose={onClose}
           isOpen={isOpen}
         >
           <DrawerSecretaries.Header />
           <DrawerSecretaries.Main>
-            <Input placeholder="Pesquisar secretaria..." mb={4} />
-            {configSidebar.map((value) => (
+            <InputGroup>
+              <InputLeftElement pointerEvents={"none"}>
+                <AiOutlineSearch />
+              </InputLeftElement>
+              <Input
+                variant={"filled"}
+                borderRadius={"2xl"}
+                placeholder="Pesquisar secretaria..."
+                mb={4}
+                onChange={(event) => setSearchText(event.target.value)}
+              />
+            </InputGroup>
+            {filteredConfig.map((value) => (
               <div key={value.id}>
                 <CardSecretary
                   name={value.name}
                   path={value.path}
                   sigla={value.sigla}
+                  onCloseDrawer={onClose}
                 />
               </div>
             ))}

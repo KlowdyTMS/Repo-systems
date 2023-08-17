@@ -16,16 +16,17 @@ interface Props {
   sigla: string;
   name: string;
   path: string;
+  onCloseDrawer?: () => void;
 }
 
 export function CardSecretary(props: Props) {
-  const { name, path, sigla, ...rest } = props;
+  const { name, path, sigla, onCloseDrawer, ...rest } = props;
   const color = useColorModeValue("gray.100", "whiteAlpha.200");
 
   return (
     <Stack spacing="4" mt={"2"}>
       <Card variant={"filled"} bgColor={color} {...rest}>
-        <ChakraCardBody>
+        <ChakraCardBody p={"3"}>
           <Flex
             flexDirection={"row"}
             alignItems={"center"}
@@ -34,15 +35,17 @@ export function CardSecretary(props: Props) {
             <Flex alignItems={"center"}>
               <Avatar name={sigla} size={"md"} />
               <Text ml={"4"} fontSize={"lg"} title={name}>
-                {formatLimitText(name, 10)}
+                {formatLimitText(name, 14)}
               </Text>
             </Flex>
-            <Link to={path}>
+            <Link to={`secretarias/${path}`}>
               <IconButton
-                aria-label="visualizarSecretaria"
+                variant={"ghost"}
+                aria-label={`visualizar secretaria ${name}`}
                 borderRadius={"full"}
                 icon={<IoIosArrowForward />}
                 fontSize={"1xl"}
+                onClick={onCloseDrawer}
               />
             </Link>
           </Flex>

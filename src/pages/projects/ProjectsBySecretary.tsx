@@ -9,21 +9,29 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useParams } from "react-router-dom";
 import { configProjects } from ".";
 import { CardProject } from "../../components/Card";
 import { EmptyData } from "../../components/EmptyData/EmptyData";
 
-export default function Projects() {
+export default function ProjectsBySecretary() {
   const [searchText, setSearchText] = useState("");
-  const filteredConfig = configProjects.filter((value) =>
-    value.name.toLowerCase().includes(searchText.toLowerCase())
-  );
+  const { secretary } = useParams<string>();
+  const filteredConfig = configProjects.filter((value) => {
+    if (secretary) {
+      return (
+        value.secretary.toLowerCase() === secretary.toLowerCase() &&
+        value.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+    }
+    return value.name.toLowerCase().includes(searchText.toLowerCase());
+  });
 
   return (
     <Flex flexDirection={"column"} p={"10"}>
       <Box mb={"5"}>
         <Heading size={"lg"} mb={"3"}>
-          Projetos
+          Projetos - {secretary}
         </Heading>
         <InputGroup>
           <InputLeftElement pointerEvents="none">

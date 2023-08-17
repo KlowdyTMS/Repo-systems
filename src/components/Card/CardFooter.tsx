@@ -7,7 +7,6 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { BiLink } from "react-icons/Bi";
-import { useTranslation } from "react-i18next";
 
 interface Props {
   version: string;
@@ -15,7 +14,7 @@ interface Props {
 }
 
 export function CardFooter({ version = "", link = "" }: Props) {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   return (
     <>
@@ -37,7 +36,7 @@ export function CardFooter({ version = "", link = "" }: Props) {
         >
           <Tooltip label="Versão do sistema" hasArrow>
             <Text fontSize={"sm"}>
-              {t("versão")} {version}
+              {"versão"} {version}
             </Text>
           </Tooltip>
           <Tooltip label="Acessar Projeto" hasArrow>
@@ -47,6 +46,7 @@ export function CardFooter({ version = "", link = "" }: Props) {
               aria-label="See menu"
               size="lg"
               icon={<BiLink />}
+              borderRadius={"full"}
               onClick={() => {
                 if (link.length > 0) {
                   if (!/^https?:\/\//i.test(link)) {

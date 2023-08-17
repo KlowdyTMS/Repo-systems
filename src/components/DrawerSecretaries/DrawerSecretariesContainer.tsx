@@ -3,18 +3,19 @@ import {
   DrawerCloseButton,
   DrawerContent,
   DrawerOverlay,
+  DrawerProps,
 } from "@chakra-ui/react";
 import { MutableRefObject } from "react";
 
-interface Props {
-  ref: MutableRefObject<HTMLDivElement | null>;
+interface Props extends DrawerProps {
+  containerRef: MutableRefObject<HTMLDivElement | null>;
   isOpen: boolean;
   onClose: () => void;
-  children?: JSX.Element[];
+  children: JSX.Element[];
 }
 
 export function DrawerSecretariesContainer(props: Props) {
-  const { ref, isOpen, onClose, children, ...rest } = props;
+  const { containerRef, isOpen, onClose, children, ...rest } = props;
   // const { t } = useTranslation();
 
   return (
@@ -22,11 +23,11 @@ export function DrawerSecretariesContainer(props: Props) {
       isOpen={isOpen}
       placement="left"
       onClose={onClose}
-      finalFocusRef={ref}
+      finalFocusRef={containerRef}
       {...rest}
     >
       <DrawerOverlay />
-      <DrawerContent>
+      <DrawerContent pb={2}>
         <DrawerCloseButton />
         {children}
       </DrawerContent>

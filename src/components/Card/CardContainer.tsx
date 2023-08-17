@@ -6,7 +6,7 @@ interface Props {
 
 export function CardContainer({ children }: Props) {
   return (
-    <Card maxW="sm" variant={"elevated"} borderBottomRadius={"17px"}>
+    <Card maxW="full" variant={"elevated"} borderBottomRadius={"17px"}>
       {children}
     </Card>
   );

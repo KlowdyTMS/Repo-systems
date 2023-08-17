@@ -1,9 +1,13 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Projects from "../pages/projects/Projects";
 
 const LazyNotFound = lazy(() => import("../pages/errors/NotFound"));
+const LazyProjects = lazy(() => import("../pages/projects/Projects"));
+const LazyProjectsBySecretary = lazy(
+  () => import("../pages/projects/ProjectsBySecretary")
+);
 
 export const browserRouter = createBrowserRouter([
   {
@@ -12,20 +16,28 @@ export const browserRouter = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Projects />,
+        element: (
+          <Suspense fallback={<h1>Rendering...</h1>}>
+            <LazyProjects />
+          </Suspense>
+        ),
       },
       {
-        path: ":secretary",
-        element: <Projects />,
+        path: "secretarias/:secretary",
+        element: (
+          <Suspense fallback={<h1>Rendering...</h1>}>
+            <LazyProjectsBySecretary />
+          </Suspense>
+        ),
+      },
+      {
+        path: "*",
+        element: (
+          <Suspense fallback={<h1>Rendering...</h1>}>
+            <LazyNotFound />
+          </Suspense>
+        ),
       },
     ],
-  },
-  {
-    path: "*",
-    element: (
-      <Suspense fallback={<h1>Rendering...</h1>}>
-        <LazyNotFound />
-      </Suspense>
-    ),
   },
 ]);

@@ -1,21 +1,20 @@
 import {
   Avatar,
   Box,
+  Button,
+  ButtonGroup,
   CardHeader as CardHeaderChakra,
   Flex,
   Heading,
   IconButton,
   PopoverArrow,
   PopoverCloseButton,
-  Button,
-  ButtonGroup,
 } from "@chakra-ui/react";
-import { BsShareFill, BsCheck2 } from "react-icons/bs";
-import { IoCopy } from "react-icons/io5";
-import { SlOptionsVertical } from "react-icons/Sl";
-import { Popover } from "../Popover";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { SlOptionsVertical } from "react-icons/Sl";
+import { BsCheck2 } from "react-icons/bs";
+import { IoCopy } from "react-icons/io5";
+import { Popover } from "../Popover";
 
 interface Props {
   name: string;
@@ -28,7 +27,7 @@ export function CardHeader({
   photo = "https://bit.ly/sage-adebayo",
   link = "",
 }: Props) {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const [isCheck, setIsCheck] = useState(false);
 
   const handleCopyLink = (linkToCopy: string) => {
@@ -77,6 +76,7 @@ export function CardHeader({
               colorScheme="gray"
               aria-label="See menu"
               icon={<SlOptionsVertical />}
+              borderRadius={"full"}
             />
           </Popover.Trigger>
           <Popover.Content>
@@ -96,7 +96,7 @@ export function CardHeader({
                   color={isCheck ? "green.400" : ""}
                   borderColor={isCheck ? "green.400" : ""}
                 >
-                  {isCheck ? t("Link copiado!") : t("Copiar link de acesso")}
+                  {isCheck ? "Link copiado!" : "Copiar link de acesso"}
                 </Button>
               </ButtonGroup>
             </Popover.Body>
