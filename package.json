@@ -30,8 +30,7 @@
     "react-i18next": "^13.0.2",
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.14.2",
-    "uuid": "^9.0.0",
-    "zustand": "^4.3.9"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@chakra-ui/cli": "^2.4.1",
