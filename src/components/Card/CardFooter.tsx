@@ -6,8 +6,8 @@ import {
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import { BiLink } from "react-icons/Bi";
 import { useTranslation } from "react-i18next";
+import { BiLink } from "react-icons/bi";
 import { tokens } from "../../locales/tokens";
 
 interface Props {
