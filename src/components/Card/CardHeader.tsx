@@ -11,7 +11,7 @@ import {
   PopoverCloseButton,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { SlOptionsVertical } from "react-icons/Sl";
+import { SlOptionsVertical } from "react-icons/sl";
 import { BsCheck2 } from "react-icons/bs";
 import { IoCopy } from "react-icons/io5";
 import { Popover } from "../Popover";
