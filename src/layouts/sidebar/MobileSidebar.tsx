@@ -12,11 +12,14 @@ import { SwitchThemeButton } from "../../components/SwitchThemeButton/SwitchThem
 import { DrawerSecretaries } from "../../components/DrawerSecretaries";
 import { configSidebar } from "./config";
 import { CardSecretary } from "../../components/CardSecretary/CardSecretary";
+import { useTranslation } from "react-i18next";
+import { SwitchLanguage } from "../../components/SwitchLanguage/SwitchLanguage";
 
 export function MobileSidebar() {
   const { onClose, onOpen, isOpen } = useDisclosure();
   const ref = useRef(null);
   const [searchText, setSearchText] = useState("");
+  const { t } = useTranslation();
 
   const filteredConfig = configSidebar.filter((value) =>
     value.name.toLowerCase().includes(searchText.toLowerCase())
@@ -32,10 +35,11 @@ export function MobileSidebar() {
         <Input
           variant={"filled"}
           borderRadius={"2xl"}
-          placeholder="Pesquisar secretaria..."
+          placeholder={t("nav.searchSecretary")}
           w={"full"}
         />
       </InputGroup>
+      <SwitchLanguage mr={3} placementTooltip="end" />
       <SwitchThemeButton />
       <DrawerSecretaries.Container
         containerRef={ref}
@@ -53,7 +57,7 @@ export function MobileSidebar() {
             <Input
               variant={"filled"}
               borderRadius={"2xl"}
-              placeholder="Pesquisar secretaria..."
+              placeholder={t("nav.searchSecretary")}
               mb={4}
               onChange={(event) => setSearchText(event.target.value)}
             />

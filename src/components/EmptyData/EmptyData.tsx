@@ -1,9 +1,11 @@
 import { Flex, IconButton, Text, useColorModeValue } from "@chakra-ui/react";
 import { AiFillCloud } from "react-icons/ai";
 import { FaBan } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 export function EmptyData() {
   const color = useColorModeValue("gray.100", "whiteAlpha.200");
+  const { t } = useTranslation();
 
   return (
     <Flex
@@ -15,7 +17,7 @@ export function EmptyData() {
     >
       <IconButton
         variant="unstyled"
-        aria-label="ícone de nuvem"
+        aria-label="cloud icon"
         color={color}
         pointerEvents={"none"}
         size={"auto"}
@@ -23,11 +25,11 @@ export function EmptyData() {
         icon={<AiFillCloud />}
       />
       <Text fontSize={"2xl"} fontWeight={"bold"}>
-        Nada encontrado
+        {t("nav.notFound")}
       </Text>
       <IconButton
         variant="unstyled"
-        aria-label="sinal de vazio"
+        aria-label="empty sign"
         color={color}
         pointerEvents={"none"}
         fontSize={"80px"}

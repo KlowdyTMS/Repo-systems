@@ -16,7 +16,6 @@ interface Props extends DrawerProps {
 
 export function DrawerSecretariesContainer(props: Props) {
   const { containerRef, isOpen, onClose, children, ...rest } = props;
-  // const { t } = useTranslation();
 
   return (
     <Drawer

@@ -15,6 +15,8 @@ import { SlOptionsVertical } from "react-icons/Sl";
 import { BsCheck2 } from "react-icons/bs";
 import { IoCopy } from "react-icons/io5";
 import { Popover } from "../Popover";
+import { useTranslation } from "react-i18next";
+import { tokens } from "../../locales/tokens";
 
 interface Props {
   name: string;
@@ -27,7 +29,7 @@ export function CardHeader({
   photo = "https://bit.ly/sage-adebayo",
   link = "",
 }: Props) {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const [isCheck, setIsCheck] = useState(false);
 
   const handleCopyLink = (linkToCopy: string) => {
@@ -96,7 +98,7 @@ export function CardHeader({
                   color={isCheck ? "green.400" : ""}
                   borderColor={isCheck ? "green.400" : ""}
                 >
-                  {isCheck ? "Link copiado!" : "Copiar link de acesso"}
+                  {isCheck ? t(tokens.nav.copiedLink) : t(tokens.nav.copyLink)}
                 </Button>
               </ButtonGroup>
             </Popover.Body>

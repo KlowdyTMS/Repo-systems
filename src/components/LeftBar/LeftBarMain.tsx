@@ -2,6 +2,8 @@ import { Flex, IconButton, Tooltip } from "@chakra-ui/react";
 import { MutableRefObject } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
+import { useTranslation } from "react-i18next";
+
 interface Props {
   searchRef: MutableRefObject<null>;
   onOpen: () => void;
@@ -9,6 +11,7 @@ interface Props {
 
 export function LeftBarMain(props: Props) {
   const { searchRef, onOpen, ...rest } = props;
+  const { t } = useTranslation();
 
   return (
     <Flex
@@ -18,7 +21,7 @@ export function LeftBarMain(props: Props) {
       mb={"3.5"}
       {...rest}
     >
-      <Tooltip label="Pesquisar secretaria" placement="right" hasArrow>
+      <Tooltip label={t("nav.searchSecretary")} placement="right" hasArrow>
         <IconButton
           ref={searchRef}
           aria-label="button"

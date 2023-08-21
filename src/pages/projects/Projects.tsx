@@ -8,13 +8,16 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { AiOutlineSearch } from "react-icons/ai";
 import { configProjects } from ".";
 import { CardProject } from "../../components/Card";
 import { EmptyData } from "../../components/EmptyData/EmptyData";
+import { tokens } from "../../locales/tokens";
 
 export default function Projects() {
   const [searchText, setSearchText] = useState("");
+  const { t } = useTranslation();
   const filteredConfig = configProjects.filter((value) =>
     value.name.toLowerCase().includes(searchText.toLowerCase())
   );
@@ -23,7 +26,7 @@ export default function Projects() {
     <Flex flexDirection={"column"} p={"10"}>
       <Box mb={"5"}>
         <Heading size={"lg"} mb={"3"}>
-          Projetos
+          {t(tokens.nav.projects)}
         </Heading>
         <InputGroup>
           <InputLeftElement pointerEvents="none">
@@ -34,7 +37,7 @@ export default function Projects() {
             size={"md"}
             width={"auto"}
             borderRadius={"2xl"}
-            placeholder="pesquisar projeto..."
+            placeholder={t(tokens.nav.researchProject)}
             onChange={(event) => setSearchText(event.target.value)}
           />
         </InputGroup>

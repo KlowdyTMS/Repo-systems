@@ -13,9 +13,12 @@ import { useParams } from "react-router-dom";
 import { configProjects } from ".";
 import { CardProject } from "../../components/Card";
 import { EmptyData } from "../../components/EmptyData/EmptyData";
+import { useTranslation } from "react-i18next";
+import { tokens } from "../../locales/tokens";
 
 export default function ProjectsBySecretary() {
   const [searchText, setSearchText] = useState("");
+  const { t } = useTranslation();
   const { secretary } = useParams<string>();
   const filteredConfig = configProjects.filter((value) => {
     if (secretary) {
@@ -31,7 +34,7 @@ export default function ProjectsBySecretary() {
     <Flex flexDirection={"column"} p={"10"}>
       <Box mb={"5"}>
         <Heading size={"lg"} mb={"3"}>
-          Projetos - {secretary}
+          {t(tokens.nav.projects)} - {secretary}
         </Heading>
         <InputGroup>
           <InputLeftElement pointerEvents="none">
@@ -42,7 +45,7 @@ export default function ProjectsBySecretary() {
             size={"md"}
             width={"auto"}
             borderRadius={"2xl"}
-            placeholder="pesquisar projeto..."
+            placeholder={t(tokens.nav.researchProject)}
             onChange={(event) => setSearchText(event.target.value)}
           />
         </InputGroup>
